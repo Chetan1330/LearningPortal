@@ -98,10 +98,10 @@ WSGI_APPLICATION = 'LearningPortal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME' : 'learning',
-        'USER' : 'postgres',
-        'PASSWORD' : 'admin',
-        'HOST' : 'localhost',
+        'NAME' : 'd1clk7i12laju8',
+        'USER' : 'nacphzotpgghgi',
+        'PASSWORD' : '04ee0f6893cf82732ff2033088d8a8ba209ecf2fcf344cbdf6eb56f15dc39568',
+        'HOST' : 'ec2-54-85-56-210.compute-1.amazonaws.com',
         'PORT' : '5432'
     }
 }
