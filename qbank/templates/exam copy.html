@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock title %}
+
+{% block content %}
+<section class="section  pclear secPadding" style="background-color:#ebebe0;margin-top:20px">
+
+<div class="container" style="margin-top:15px;width:98%"  align="center">
+        
+    <div class="row " style="margin-top: 5px;">
+                <div class="col-sm-12" align="center" style="background-color:#ffffff">
+                    <h2><b>{{course_title}}</b>   - {{total_question}} Available Questions  - {{course_date|date:"d/m/Y" }}</h2>
+                    
+                    <!-- 155 Available Questions - Last Update 2022-08-30 -->
+                </div>
+    </div>
+    <div class="row" style="margin-top: 15px;">
+        <div style="background-color:#ffffff;height:350px;" class="col-sm-2" align="center">
+            <div class="row">
+                <div class="col-sm-12" style="padding-top: 15px;"align="center">
+                    00:00:00
+                    <img id="logo" src="{{ base_url }}/media/images/core/clock.png" alt="Worthy">
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-sm-6" align="right">
+                    <img id="logo"  src="{{ base_url }}/media/images/core/refresh.png" alt="Worthy">
+                </div>
+                <!-- href="/exam/{{next_question}}" -->
+                <div class="col-sm-6" align="left">
+                    <img id="logo" src="{{ base_url }}/media/images/core/play.png" alt="Worthy">
+                    
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top: 15px;">
+                <div class="col-sm-12" align="center">
+                    <img id="logo" src="{{ base_url }}/media/images/core/bar.png" alt="Worthy">
+                </div>
+            </div>
+            <!-- <div class="row" style="margin-top: 15px;">
+                <div class="col-sm-12" align="center">
+                  QUESTION : 1/10
+                </div>
+            </div> -->
+        </div>
+        <div class="col-sm-10" align="center">
+            <div class="row">
+                <div class="col-sm-12" align="left">
+
+                    <div class="row"  style="background-color:#ffffff;height:40px;margin-left:2px;">
+                        <div class="col col-sm-1" style="margin-top:8px;" align="left">
+                            <button style="width:80px;" class="btn-primary">MARK</button>
+                        </div>
+                        
+                        <div class="col-sm-1" style="margin-top:8px;" align="left">
+                            <button style="width:80px;" class="btn-primary">ANSWER</button>
+                        </div>
+                        <div class="col-sm-1" style="margin-top:8px;" align="left">
+                            <!-- <button style="width:80px;" class="btn-primary">SUBMIT</button> -->
+                        </div>
+
+                        
+
+
+                        <input type="submit" onclick="clicked();" value="Button" />
+
+
+                        
+                        <div class="col-sm-1" align="left">
+                            
+                        </div>
+                        <div class="col-sm-1" style="margin-top:3px;" align="left">
+                           <a href = "/exam/{{course_slug}}/{{previous_question}}"><img id="logo"  src="{{ base_url }}/media/images/core/left.png"  alt="Worthy"></a>
+                           
+                        </div>
+                        <div class="col-sm-1" style="margin-top:3px;">
+
+
+                            {% if question_dtls.question_num < 10  %}
+                            <a  href = "/exam/{{course_slug}}/{{next_question}}"><img id="logo"  src="{{ base_url }}/media/images/core/right.png" alt="Worthy"> </a>
+                            {% endif %}
+                           <!-- <a  href = "/exam/{{course_slug}}/{{next_question}}"><img id="logo"  src="{{ base_url }}/media/images/core/right.png" alt="Worthy"> </a> -->
+                        </div>
+                        
+                        <div class="col-sm-1" align="left">
+                            
+                        </div>
+                        <div class="col-sm-1" align="left">
+                            
+                        </div>
+                        <div class="col-sm-1" align="left">
+                            
+                        </div>
+                        
+                        <div class="col-sm-3" style="margin-top:8px;" align="left">
+                            <button  style="width:160px;" class="btn-primary">MORE QUESTIONS</button>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <div class="row"style="margin-top: 15px;" >
+                        <div class="col-sm-6" align="left">
+                        <div class="row" style="background-color:#ffffff;height:30px;margin-left:2px;">
+                            <div class="col-sm-6" style="margin-top:5px;" align="left">
+                                FREETEST - QUESTION 
+                            </div>
+                            <div style="margin-top:5px;"  class="col-sm-4" align="left">
+                                <!-- CORRECT ANSWER: A -->
+                                QUESTION : {{question_dtls.question_num}}/10
+                            </div>
+                            <div style="margin-top:5px;"  class="col-sm-2" align="left">
+                              <img id="logo" src="{{ base_url }}/media/images/core/arrow.png" alt="Worthy"> 
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row" style="margin-top: 15px;margin-left:2px;">
+                            <div class="col-sm-12" style="background-color:#ffffff;height:250px;padding-top: 5px;" align="left">
+
+                                {{question_dtls.question}}
+                                
+                                <!-- Which of the following variables best represents a strategic performance measure? -->
+                            </div>
+                            
+                        </div>
+                        </div>
+                        
+                        
+                        
+                        <div class="col-sm-6" align="center">
+                            <div style="background-color:#f5f5f0;margin-left:2px;" class="row">
+                            <div  class="col-sm-1" align="left">
+                               A
+                            </div>
+                            <div class="col-sm-1"  >
+                                <input  style="height:16px;width:16px;" type="checkbox" >
+                            </div>
+                           
+                            
+                            </div>
+                            <div style="background-color:#ffffff;min-height:51px;margin-left:2px;" class="row">
+                            <div style="padding-top: 2px;" class="col-sm-12" align="left">
+                                {{question_dtls.option_a}}
+                            </div>
+                            </div>
+                            
+                            <div style="background-color:#f5f5f0;;margin-left:2px;" class="row">
+                            <div class="col-sm-1" align="left">
+                               B
+                            </div>
+                            <div class="col-sm-1" >
+                                <input style="height:16px;width:16px;" type="checkbox" >
+                            </div>
+                            <!--<div class="col-sm-4" style="margin-top:2px;" align="left">
+                               <img id="logo" src="./arrow1.png" alt="Worthy"> 
+                            </div> -->
+                            
+                            </div>
+                            <div  style="background-color:#ffffff;min-height:51px;;margin-left:2px;" class="row">
+                            <div style="padding-top: 2px;" class="col-sm-12" align="left">
+                                {{question_dtls.option_b}}
+                            </div>
+                            </div>
+                            
+                            <div style="background-color:#f5f5f0;;margin-left:2px;"class="row">
+                            <div class="col-sm-1" align="left">
+                               C
+                            </div>
+                            <div class="col-sm-1" >
+                                <input style="height:16px;width:16px;" type="checkbox" >
+                            </div>
+                            <!--<div class="col-sm-4" style="margin-top:2px;" align="left">
+                              <img id="logo" src="./arrow1.png" alt="Worthy">  
+                            </div> -->
+                            
+                            </div>
+                            <div style="background-color:#ffffff;min-height:51px;;margin-left:2px;" class="row">
+                            <div style="padding-top: 2px;" class="col-sm-12" align="left">
+                                {{question_dtls.option_c}}
+                            </div>
+                            </div>
+                            
+                            <div style="background-color:#f5f5f0;;margin-left:2px;" class="row">
+                            <div class="col-sm-1" align="left">
+                               D
+                            </div>
+                            <div class="col-sm-1" >
+                            <input style="height:16px;width:16px;" type="checkbox" >
+                        </div>
+                            <!--<div class="col-sm-4" style="margin-top:2px;" align="left">
+                               <img id="logo" src="./arrow1.png" alt="Worthy"> 
+                            </div> -->
+                            
+                            </div>
+                            <div style="background-color:#ffffff;min-height:51px;;margin-left:2px;" class="row">
+                            <div style="padding-top: 2px;" class="col-sm-12" align="left">
+                                {{question_dtls.option_d}}
+                            </div>
+                            </div>
+                           
+                           
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        </div>
+
+    </section>
+        {% endblock content %}
+
+
+        <script type="text/javascript">
+            function clicked() {
+                alert('clicked');
+            }

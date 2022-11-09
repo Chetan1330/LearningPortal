@@ -1,0 +1,862 @@
+{% extends "base.html" %}
+
+{% block title %} Profile {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<style>
+    .first {
+        width: 25%;
+        float: left;
+		color: #ffffff;
+        /* padding: 15px; */
+        margin-top: -450px;
+        margin-left: 50px;
+        /* border: 1px solid red; */
+    }
+
+    .one {
+        margin: 0%;
+        position: relative;
+        /* width: 100%;
+        float: left; */
+        /* padding: 15px; */
+        /* border: 1px solid red; */
+    }
+
+    .first-txt {
+            position: absolute;
+            top: 11px;
+            left: 18px;
+    }
+  
+    .second-txt {
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+    }
+
+    .para {
+        font-size: 20px;
+    }
+
+    .welcome {
+        float: left;
+        background-color: blue;
+        margin-top: 20px;
+    }
+
+    .student {
+        float: right;
+    }
+
+    .special {
+        margin-top: 150px;
+        padding: 0px 30px;
+		color: #ffffff;
+    }
+
+
+    .testi {
+        float: left;
+        background-color: black;
+        width: 1330px;
+        height: 400px;
+    }
+
+    .head {
+        color: white;
+        text-align: center;
+        margin-top: 100px;
+        font-family: sans-serif;
+        font-size: 25px;
+        font-weight: lighter;
+    }
+
+    .item {
+        background-color: black !important;
+        color: white;
+    }
+
+    .whole {
+        padding: 20px;
+    }
+
+    .carousel-indicators {
+        margin-bottom: -50px;
+    }
+
+    .img-circle {
+        float: left;
+        margin-left: 350px;
+    }
+
+    .inner {
+        float: left;
+        margin-left: 500px;
+        /* margin-top: -40px; */
+
+    }
+
+    .contact {
+        float: left;
+        margin-top: 30px;
+        background-color: black;
+        width: 1330px;
+        height: 500px;
+    }
+
+    .contact h1 {
+        text-align: center;
+        color: white;
+        font-weight: 200;
+    }
+
+    /* .form {
+        float: left;
+        margin-left: 200px;
+        margin-top: 50px;
+        width: 450px;
+    } */
+
+    .drive p {
+        float: right;
+        color: white;
+        margin-left: 130px;
+        margin-top: -330px;
+    }
+
+    .map {
+        color: snow;
+        margin-top: 160px;
+        margin-left: 70px;
+    }
+
+    .phone {
+        color: snow;
+        margin-top: 30px;
+        margin-left: 70px;
+    }
+
+    .mail {
+        color: snow;
+        margin-left: 70px;
+        margin-top: 25px;
+    }
+
+    .button-input {
+        background-color: rgb(25, 163, 218);
+        border: none;
+        color: white;
+        padding: 8px 35px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 15px 2px;
+        cursor: pointer;
+        margin-left: -12px;
+    }
+	
+	
+    .sub-menu-item .sample a:hover {
+    background-color: blue;
+    color: #ffffff;
+    padding:5px;
+    
+    }
+
+    .glyphicon {
+        position: relative;
+        top: 1px;
+        margin-left: -10px;
+        display: inline-block;
+        font-family: "Glyphicons Halflings";
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- [ Main Content ] start -->
+    <div class="container-fluid page__container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+        <h1 class="h2">Dashboard</h1>
+        
+        <div class="card" style="width:100%;">
+	
+            <div class="one">
+                <img class="col-12" src="{{ MEDIA_URL }}/media/images/core/main-image.jpg" >
+                
+            </div>
+            <div class="col-sm-8 first-txt">
+                <h2 class="" style="color:#ffffff;">Search and Download
+                    Your Certification Questions!</h2>
+                <p style="color:#ffffff; font-size: 18px;" class="">
+                    Study for Your IT Certification with our Mobile App and Web Simulator! The Final Certification Exam has
+                    never been easier.
+                </p>
+                <p  style="color:#ffffff; font-size: 20px;" class="">100% Money Back and Quality Guarantee!</p>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for course in course_list %}
+            <div class="col-sm-4 card" style="text-align: center;background-color: rgba(241, 239, 239, 0.801);border-bottom: 3px solid rgb(28, 28, 252);"  >
+                <!-- <button class="button"><i class="fa fa-thumbs-up"></i>Like 28K</button>
+                <div class="share">
+                    <button class="button-share"><i class="fa fa-thumbs-up"></i>Share</button>
+                </div>
+                <h1> 
+                    {% if user.is_authenticated %}
+                    {{ user.username }} 
+                    {% endif %}
+                    Trusted By 19K+ Professionals</h1>
+                <p>Certification-Questions helps people understand, study and overcome with
+                    great results the more
+                    complicated Certification Exams. We are proud to have successfully served more than 6K+
+                    professionals by always offering secure and reliable study materials.</p> -->
+                    <a href="/exam_preview/{{course.slug}}" style="color:black"><h2> {{course.name}}</h2></a>
+        
+               <p>{{course.desc|safe}}</p>
+            </div>
+            {% endfor %}
+
+            <div class="">
+                <div class="welcome">
+                    <div class="student">
+                        <img src="{{ MEDIA_URL }}/media/images/core/second1-image.png">
+                    </div>
+                    <div class="special">
+                        <h1 style="color: #ffffff;">Why We Are So Special..</h1>
+                        <p class="para">Welcome to Certification-Questions.com where we deliver certification questions with
+                            answers and
+                            explanations to help students obtain their certification by using our Online Web Simulator and
+                            Mobile
+                            App.
+                            Try our free tests and remember that 97% of people who used our certification questions successfully
+                            passed the final exam.</p>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+                <!-- <div class="card contact" style=" background-color: black; align-self: center;" id="contact"> 
+                    <h1 >Contact Us</h1>
+            
+                    <div class="form" style="align-self: center;">
+                        <form action="">
+                            <div class="row">
+                                <input style="" type="text" class="col-sm-4 form-control" placeholder="Name">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <input style="" type="text" class="col-sm-4 form-control" placeholder="Enter email">
+                                <span class="glyphicon glyphicon-envelope" style="margin-top: -30px; margin-left: 420px;"></span>
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <textarea style="" type="text" class="col-sm-4 form-control" rows="6" placeholder="Message"></textarea>
+                                <span class="glyphicon glyphicon-pencil" style="margin-top: -95px; margin-left: 420px;"></span>
+                            </div>
+                            <input type="button" class="button-input" value="SEND">
+                        </form>
+                    </div>
+            
+                    <div  class="drive"  style="margin-right:10px;min-height:450px;" align="left">
+                        
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora<br>cumque, 
+                            aliquam
+                            deleniti voluptatibus voluptas. <br> Maecenas ultrices finibus erat sit amet auctor. Curabitur et metus
+                            laoreet, fermentum <br> quam sagittis,  cursus augue.
+                        </p>
+                        <div>
+                            <span style="margin-left:80px;" class="glyphicon glyphicon-map-marker map"> 1508 Kembery Drive, Chicago, IL 60605 </span>
+                        </div>
+                        <div>
+                            <span style="margin-left:80px;" class="glyphicon glyphicon-earphone phone"> 202-314-1583</span>
+                        </div>
+                        <div>
+                            <span style="margin-left:80px;" class="glyphicon glyphicon-envelope mail"> support@biss.com</span>
+                        </div>
+                        <div style="color: white;">
+                            <span class="glyphicon glyphicon-facebook" aria-hidden="true"></span>
+                        </div>
+                    </div>
+            
+                    <div>
+                        <div class="row" style="height:70px;margin-top:20px;">
+                            <div class="col-md-6">
+                                <p class="text-left" style="background-color: white;margin-left:100px;font-size:15px;font-weight:bold;">Copyright © 2019  Explorerg - All Rights Reserved.</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="text-right" style="background-color: white;margin-right:200px;font-size:15px;font-weight:bold;">Powered by Explorerg</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div> -->
+            
+        </div>
+
+
+        <div style="margin-top: 10px;" class="row">
+            <div class="col-sm-4 card">
+                <h1 style="text-align:center;">Diego Ventura</h1>
+                <h4 style="text-align:center;">Software Architect</h4><br>
+        
+                <p style="text-align:center;">"I took the certification exam last October 29 and I passed it with
+                    86, the simulators helped me a lot
+                    because the questions are harder than the real exam and they cover many issues.
+                    It helps a lot to study and achieve the expected results in the exam, inclusive the company responded my
+                    doubts. I'm so happy with this simulator, and I recommend it"</p>
+            </div>
+        
+            <div class="col-sm-4 card">
+                <h1 style="text-align:center;">Matteo Balzereni</h1> <br>
+                <h4 style="text-align:center;">Software Developer - Spring Professional</h4><br>
+        
+                <p  style="text-align:center;">"I took the certification exam last August 30 and I passed it with
+                    88%. Your mock exams helped me a lot because the questions are harder than the real exam but they covered
+                    every important issues. You'll probably find fewer questions on xml configuration but this simulators this
+                    simulator helped a lot with my preparation because I had the opportunity to study each topic in depth."
+        
+                </p>
+            </div>
+        
+            <div class="col-sm-4 card">
+                <h1 style="text-align:center;">Jude Regan</h1> <br>
+                <h4 style="text-align:center;">Software Developer - Spring Professional</h4><br>
+        
+                <p  style="text-align:center;">"Hi, I scored 91% in the Core Spring 4.2 exam using your mock exams.
+                    I would recommend them to anyone. Regards, Jude Regan Software Developer"
+                </p>
+            </div>
+        
+            <div class="col-sm-4 card">
+                <h1 style="text-align:center;">Praveen Nelson</h1> <br>
+                <h4 style="text-align:center;">Linux Administrator - 1Z0-808 Certified</h4><br>
+        
+                <p  style="text-align:center;">"Hi I am Praveen Nelson, a Linux Systems Administrator. Recently I
+                    started to improve my Java programming skills and that's why I decided to take the 1Z0-808 Certification.
+                    Thanks to you I had a chance to practice, study and understand all the new features!! Your Web Simulator is
+                    fast, beautiful and fun... the contents are perfect and to pass the final exam with 90% of scores was
+                    amazing. Thank you!!! Praveen Nelson System Administrator"
+        
+        
+                </p>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+        
+            
+        
+            <!--<div class="courses">
+                <h1>Courses</h1>
+                <p class="para">Lorem ipsum dolor sit amet laudantium molestias similique.</p>
+                <p class="para"> Quisquam incidunt ut laboriosam.</p>
+                <button class="button1 button4 active">ALL</button>
+                <button class="button1 button4">WEB DESIGN</button>
+                <button class="button1 button4">APP DEVELOPMENT</button>
+                <button class="button1 button4">MOBILE APPS</button>
+            </div>-->
+           <!-- <div class="row">
+                <div class="column">
+                    <img src="images/portfolio-1.jpg" alt="portfolio-1" style="width:55%;margin-left: 100px;">
+                    <p class="project-small" style="margin-left: 100px; margin-right: 100px;">PROJECT TITLE</p>
+                </div>
+                <div class="column">
+                    <img src="images/portfolio-2.jpg" alt="portfolio-2" style="width:55%; margin-left: -50px;">
+                    <p class="project-small" style="margin-left: -50px; margin-right: 250px;">PROJECT TITLE</p>
+                </div>
+                <div class="column">
+                    <img src="images/portfolio-3.jpg" alt="portfolio-3" style="width:55%; margin-left: -200px;">
+                    <p class="project-small" style="margin-left: -200px; margin-right: 400px;">PROJECT TITLE</p>
+                </div>
+                <div class="column" style="margin-top: 30px;">
+                    <img src="images/portfolio-4.jpg" alt="portfolio-4"
+                        style="width:55%; margin-left: 980px; margin-top: -214px;">
+                    <p align="left" class="project-small" style="margin-left: 980px; margin-right: 300px;margin-top:-42px;width:220;">PROJECT TITLE</p>
+                </div> 
+              
+            </div>
+            <div class="row">
+                <div class="column">
+                    <img src="images/portfolio-5.jpg" alt="portfolio-5" style="width:55%;margin-left: 100px;">
+                    <p class="project-small" style="margin-left: 100px; margin-right: 100px;">PROJECT TITLE</p>
+                </div>
+                <div class="column">
+                    <img src="images/portfolio-6.jpg" alt="portfolio-6" style="width:55%; margin-left: -50px;">
+                    <p class="project-small" style="margin-left: -50px; margin-right: 250px;">PROJECT TITLE</p>
+                </div>
+              
+                <div class="column">
+                    <img src="images/portfolio-7.jpg" alt="portfolio-7" style="width:55%; margin-left: -200px;">
+                    <p class="project-small" style="margin-left: -200px; margin-right: 400px;">PROJECT TITLE</p>
+                </div>
+                <div class="column" style="margin-top: 30px;">
+                    <img src="images/portfolio-8.jpg" alt="portfolio-8"
+                        style="width:55%; margin-left: 980px; margin-top: -214px;">
+                    <p align="left" class="project-small" style="margin-left: 980px; margin-right: 300px;margin-top:-42px;width:220;">PROJECT TITLE</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <img src="images/portfolio-9.jpg" alt="portfolio-9" style="width:55%;margin-left: 100px;">
+                    <p class="project-small" style="margin-left: 100px; margin-right: 100px;">PROJECT TITLE</p>
+                </div>
+                <div class="column">
+                    <img src="images/portfolio-10.jpg" alt="portfolio-10" style="width:55%; margin-left: -50px;">
+                    <p class="project-small" style="margin-left: -50px; margin-right: 250px;">PROJECT TITLE</p>
+                </div>
+                <div class="column">
+                    <img src="images/portfolio-11.jpg" alt="portfolio-11" style="width:55%; margin-left: -200px;">
+                    <p class="project-small" style="margin-left: -200px; margin-right: 400px;">PROJECT TITLE</p>
+                </div>
+              
+                 <div class="column" style="margin-top: 30px;">
+                    <img src="images/portfolio-12.jpg" alt="portfolio-12"
+                        style="width:55%; margin-left: 980px; margin-top: -214px;">
+                    <p align="left" class="project-small" style="margin-left: 980px; margin-right: 300px;margin-top:-42px;width:220;">PROJECT TITLE</p>
+                </div>
+            </div> -->
+        
+            
+        
+           <!-- <div class="work">
+                <h2>Testimonials:</h2>
+            </div> -->
+        
+            
+        
+           
+        </div>
+
+        <div class="card border-left-3 border-left-primary card-2by1">
+            <div class="card-body">
+                <div class="media flex-wrap align-items-center">
+                    <div class="media-left">
+                        <i class="material-icons text-muted-light">credit_card</i>
+                    </div>
+                    <div class="media-body"
+                         style="min-width: 180px">
+                        Your subscription ends on <strong>25 February 2015</strong>
+                    </div>
+                    <div class="media-right mt-2 mt-xs-plus-0">
+                        <a class="btn btn-success"
+                           href="student-account-billing-upgrade.html">Upgrade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+    
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <div class="h2 mb-0 mr-3 text-primary">116</div>
+                        <div class="flex">
+                            <h4 class="card-title">Angular</h4>
+                            <p class="card-subtitle">Best score</p>
+                        </div>
+                        <div class="dropdown">
+                            <a href="#"
+                               class="dropdown-toggle text-black-70"
+                               data-toggle="dropdown">Popular Topics</a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href=""
+                                   class="dropdown-item">Popular Topics</a>
+                                <a href=""
+                                   class="dropdown-item">Web Design</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart"
+                             style="height: 319px;">
+                            <canvas id="topicIqChart"
+                                    class="chart-canvas js-update-chart-line"
+                                    data-chart-hide-axes="false"
+                                    data-chart-points="true"
+                                    data-chart-suffix=" points"
+                                    data-chart-line-border-color="primary"></canvas>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <div class="card-header">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <h4 class="card-title">Courses</h4>
+                                <p class="card-subtitle">Your recent courses</p>
+                            </div>
+                            <div class="media-right">
+                                <a class="btn btn-sm btn-primary"
+                                   href="student-my-courses.html">My courses</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <ul class="list-group list-group-fit mb-0"
+                        style="z-index: initial;">
+    
+                        <li class="list-group-item"
+                            style="z-index: initial;">
+                            <div class="d-flex align-items-center">
+                                <a href="student-take-course.html"
+                                   class="avatar avatar-4by3 avatar-sm mr-3">
+                                    <img src="{{ ASSETS_ROOT }}/images/gulp.png"
+                                         alt="course"
+                                         class="avatar-img rounded">
+                                </a>
+                                <div class="flex">
+                                    <a href="student-take-course.html"
+                                       class="text-body"><strong>Learn Vue.js Fundamentals</strong></a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="progress"
+                                             style="width: 100px;">
+                                            <div class="progress-bar bg-primary"
+                                                 role="progressbar"
+                                                 style="width: 25%"
+                                                 aria-valuenow="25"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100"></div>
+                                        </div>
+                                        <small class="text-muted ml-2">25%</small>
+                                    </div>
+                                </div>
+                                <div class="dropdown ml-3">
+                                    <a href="#"
+                                       class="dropdown-toggle text-muted"
+                                       data-caret="false"
+                                       data-toggle="dropdown">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item"
+                                           href="student-take-course.html">Continue</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+    
+                        <li class="list-group-item"
+                            style="z-index: initial;">
+                            <div class="d-flex align-items-center">
+                                <a href="student-take-course.html"
+                                   class="avatar avatar-4by3 avatar-sm mr-3">
+                                    <img src="{{ ASSETS_ROOT }}/images/vuejs.png"
+                                         alt="course"
+                                         class="avatar-img rounded">
+                                </a>
+                                <div class="flex">
+                                    <a href="student-take-course.html"
+                                       class="text-body"><strong>Angular in Steps</strong></a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="progress"
+                                             style="width: 100px;">
+                                            <div class="progress-bar bg-success"
+                                                 role="progressbar"
+                                                 style="width: 100%"
+                                                 aria-valuenow="100"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100"></div>
+                                        </div>
+                                        <small class="text-muted ml-2">100%</small>
+                                    </div>
+                                </div>
+                                <div class="dropdown ml-3">
+                                    <a href="#"
+                                       class="dropdown-toggle text-muted"
+                                       data-caret="false"
+                                       data-toggle="dropdown">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item"
+                                           href="student-take-course.html">Continue</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+    
+                        <li class="list-group-item"
+                            style="z-index: initial;">
+                            <div class="d-flex align-items-center">
+                                <a href="student-take-course.html"
+                                   class="avatar avatar-4by3 avatar-sm mr-3">
+                                    <img src="{{ ASSETS_ROOT }}/images/nodejs.png"
+                                         alt="course"
+                                         class="avatar-img rounded">
+                                </a>
+                                <div class="flex">
+                                    <a href="student-take-course.html"
+                                       class="text-body"><strong>Bootstrap Foundations</strong></a>
+                                    <div class="d-flex align-items-center">
+                                        <div class="progress"
+                                             style="width: 100px;">
+                                            <div class="progress-bar bg-warning"
+                                                 role="progressbar"
+                                                 style="width: 80%"
+                                                 aria-valuenow="80"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100"></div>
+                                        </div>
+                                        <small class="text-muted ml-2">80%</small>
+                                    </div>
+                                </div>
+                                <div class="dropdown ml-3">
+                                    <a href="#"
+                                       class="dropdown-toggle text-muted"
+                                       data-caret="false"
+                                       data-toggle="dropdown">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item"
+                                           href="student-take-course.html">Continue</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+    
+                    </ul>
+                </div>
+    
+                <div class="card">
+                    <div class="card-header">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <h4 class="card-title">Quizzes</h4>
+                                <p class="card-subtitle">Your Performance</p>
+                            </div>
+                            <div class="media-right">
+                                <a class="btn btn-sm btn-primary"
+                                   href="#">Quiz results</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <ul class="list-group list-group-fit mb-0">
+    
+                        <li class="list-group-item">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <a class="text-body"
+                                       href="student-quiz-results.html"><strong>Title of quiz goes here?</strong></a><br>
+                                    <div class="d-flex align-items-center">
+                                        <small class="text-black-50 text-uppercase mr-2">Course</small>
+                                        <a href="student-take-course.html">Basics of HTML</a>
+                                    </div>
+                                </div>
+                                <div class="media-right text-center d-flex align-items-center">
+                                    <span class="text-black-50 mr-3">Good</span>
+                                    <h4 class="mb-0">5.8</h4>
+                                </div>
+                            </div>
+                        </li>
+    
+                        <li class="list-group-item">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <a class="text-body"
+                                       href="student-quiz-results.html"><strong>Directives &amp; Routing</strong></a><br>
+                                    <div class="d-flex align-items-center">
+                                        <small class="text-black-50 text-uppercase mr-2">Course</small>
+                                        <a href="student-take-course.html">Angular in Steps</a>
+                                    </div>
+                                </div>
+                                <div class="media-right text-center d-flex align-items-center">
+                                    <span class="text-black-50 mr-3">Great</span>
+                                    <h4 class="mb-0 text-success">9.8</h4>
+                                </div>
+                            </div>
+                        </li>
+    
+                        <li class="list-group-item">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <a class="text-body"
+                                       href="student-quiz-results.html"><strong>Responsive &amp; Retina</strong></a><br>
+                                    <div class="d-flex align-items-center">
+                                        <small class="text-black-50 text-uppercase mr-2">Course</small>
+                                        <a href="student-take-course.html">Bootstrap Foundations</a>
+                                    </div>
+                                </div>
+                                <div class="media-right text-center d-flex align-items-center">
+                                    <span class="text-black-50 mr-3">Failed</span>
+                                    <h4 class="mb-0 text-danger">2.8</h4>
+                                </div>
+                            </div>
+                        </li>
+    
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-5">
+    
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        <div class="h2 mb-0 mr-3 text-primary">432</div>
+                        <div class="flex">
+                            <h4 class="card-title">Experience IQ</h4>
+                            <p class="card-subtitle">4 days streak this week</p>
+                        </div>
+                        <i class="material-icons text-muted ml-2">trending_up</i>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart"
+                             style="height: 154px;">
+                            <canvas id="iqChart"
+                                    class="chart-canvas js-update-chart-line"
+                                    data-chart-points="true"
+                                    data-chart-suffix="pt"
+                                    data-chart-line-border-color="primary"></canvas>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="card card-2by1">
+                    <div class="card-header">
+                        <h4 class="card-title">Rewards</h4>
+                        <p class="card-subtitle">Your latest achievements</p>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="btn btn-primary btn-circle"><i class="material-icons">thumb_up</i></div>
+                        <div class="btn btn-danger btn-circle"><i class="material-icons">grade</i></div>
+                        <div class="btn btn-success btn-circle"><i class="material-icons">bubble_chart</i></div>
+                        <div class="btn btn-warning btn-circle"><i class="material-icons">keyboard_voice</i></div>
+                        <div class="btn btn-info btn-circle"><i class="material-icons">event_available</i></div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <div class="card-header">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <h4 class="card-title">Forum Activity</h4>
+                                <p class="card-subtitle">Latest forum topics &amp; replies</p>
+                            </div>
+                            <div class="media-right">
+                                <a class="btn btn-sm btn-primary"
+                                   href="student-forum.html"> <i class="material-icons">keyboard_arrow_right</i></a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <ul class="list-group list-group-fit">
+    
+                        <li class="list-group-item forum-thread">
+                            <div class="media align-items-center">
+                                <div class="media-left">
+                                    <div class="forum-icon-wrapper">
+                                        <a href="student-forum-thread.html"
+                                           class="forum-thread-icon">
+                                            <i class="material-icons">description</i>
+                                        </a>
+                                        <a href="student-profile.html"
+                                           class="forum-thread-user">
+                                            <img src="assets/images/people/50/guy-1.jpg"
+                                                 alt=""
+                                                 width="20"
+                                                 class="rounded-circle">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <div class="d-flex align-items-center">
+                                        <a href="student-profile.html"
+                                           class="text-body"><strong>Luci Bryant</strong></a>
+                                        <small class="ml-auto text-muted">5 min ago</small>
+                                    </div>
+                                    <a class="text-black-70"
+                                       href="student-forum-thread.html">Am I learning the right way?</a>
+                                </div>
+                            </div>
+                        </li>
+    
+                        <li class="list-group-item forum-thread">
+                            <div class="media align-items-center">
+                                <div class="media-left">
+                                    <div class="forum-icon-wrapper">
+                                        <a href="student-forum-thread.html"
+                                           class="forum-thread-icon">
+                                            <i class="material-icons">description</i>
+                                        </a>
+                                        <a href="student-profile.html"
+                                           class="forum-thread-user">
+                                            <img src="assets/images/people/50/guy-2.jpg"
+                                                 alt=""
+                                                 width="20"
+                                                 class="rounded-circle">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <div class="d-flex align-items-center">
+                                        <a href="student-profile.html"
+                                           class="text-body"><strong>Magnus Goldsmith</strong></a>
+                                        <small class="ml-auto text-muted">7 min ago</small>
+                                    </div>
+                                    <a class="text-black-70"
+                                       href="student-forum-thread.html">Can someone help me with the basic Setup?</a>
+                                </div>
+                            </div>
+                        </li>
+    
+                        <li class="list-group-item forum-thread">
+                            <div class="media align-items-center">
+                                <div class="media-left">
+                                    <div class="forum-icon-wrapper">
+                                        <a href="student-forum-thread.html"
+                                           class="forum-thread-icon">
+                                            <i class="material-icons">description</i>
+                                        </a>
+                                        <a href="student-profile.html"
+                                           class="forum-thread-user">
+                                            <img src="assets/images/people/50/woman-1.jpg"
+                                                 alt=""
+                                                 width="20"
+                                                 class="rounded-circle">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <div class="d-flex align-items-center">
+                                        <a href="student-profile.html"
+                                           class="text-body"><strong>Katelyn Rankin</strong></a>
+                                        <small class="ml-auto text-muted">12 min ago</small>
+                                    </div>
+                                    <a class="text-black-70"
+                                       href="student-forum-thread.html">I think this is the right way?</a>
+                                </div>
+                            </div>
+                        </li>
+    
+                    </ul>
+                </div>
+            </div> 
+        </div>
+    
+    </div>
+    <!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% endblock javascripts %}

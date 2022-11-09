@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load social_share %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock title %}
+
+{% block content %}
+
+
+<section class="section  pclear secPadding" style="background-color:#ebebf9;margin-top:50px">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+    <div style="margin-top:15px;background-color:#ffffff;overflow-x: hidden;" align="center">
+
+
+    <div class="row " style="margin-top: 5px;" id="content">
+        <div class="col-sm-8" align="center" style="background-color:#ffffff;margin-left:140px;">
+            <div class="row ">
+                <div class="col-sm-12">   
+          <h2><b align="center">{{course_name}}</b> 
+          </h2>
+
+                </div>
+            </div>
+
+
+            
+          <!-- 155 Available Questions - Last Update 2022-08-30 -->
+        </div>
+
+        <div id="editor"></div>
+
+
+
+
+        <div class="col-sm-1" style="margin-top:20px;font-Weight:BOLD;" align="left">
+            <a href="/exam/{{course_slug}}" ><button align="right" style="width:130px;height:30px;" class="btn-primary" >RETAKE EXAM</button></a>
+        </div>
+       
+        <div class="col-sm-1" style="margin-top:20px;font-Weight:BOLD;margin-left:20px;" align="left">
+            <!-- <a href="/login/"><button align="right" style="width:150px;height:30px;" class="btn-primary" >MORE QUESTIONS</button></a> -->
+                    {% if not user.is_authenticated %}
+                    <a href="/login/"><button align="right" style="width:150px;height:30px;" class="btn-primary" >MORE QUESTIONS</button></a>
+                     {% endif %}
+        </div>
+    </div>
+    
+
+    <div class="row ">
+        <div class="col-sm-3"> 
+  <img id="logo" src="{{ base_url }}/media/images/core/facebook.jpg?ver=1" alt="Worthy">{% post_to_facebook object_or_url "Post to Facebook!" %}
+        </div>
+        <div class="col-sm-3">
+            <img id="logo" src="{{ base_url }}/media/images/core/whatsapp.png?ver=2" alt="Worthy">{% post_to_whatsapp object_or_url "Share via WhatsApp" %}
+        </div>
+        <div class="col-sm-3">
+            <img id="logo" src="{{ base_url }}/media/images/core/twitter.png?ver=1" alt="Worthy">{% post_to_twitter "My Report: {{object.title}}. Check it out!" object_or_url "Post to Twitter" %}
+    </div>
+    <div class="col-sm-3">
+        {% if is_pass == 'yes' %}
+        <img id="logo" src="{{ base_url }}/media/images/core/download.png?ver=1" style="color:blue;" alt="Worthy">
+        <a href="/certificate/{{course_slug}}" target="_blank">View Certificate</a>
+        {% endif %}
+        <!-- <a href="/certificate/" ><button align="right" style="width:130px;height:45px;font-weight:bold;" class="btn-primary" >Generate Certificate</button></a> -->
+    </div>
+    </div>
+
+
+    <div class="row" style="padding-left:30px;padding-right:30px;">
+        <div class="col-sm-12" align="left"  >
+           <h2 style="font-size:25px;font-weight:bold;"> Your Score: <b style="font-size:30px;color:red;">{{evaluation_report.total_correct}}/{{evaluation_report.total_question}}</b></h2>
+           <!-- {{evaluation_report.total_correct}}/{{evaluation_report.total_question}} -->
+        </div>                                                                                             
+    </div>
+    
+
+    <script >
+
+       
+        var specialElementHandlers = {
+                '#editor': function (element, renderer) {
+                    return true;
+                }
+            };
+
+            function DownloadPDF () {
+                var element = document.getElementById('content');
+                html2pdf().from(element).save('filename.pdf');
+            }
+    </script>
+    {% for question in evaluation_report.question_obj %}
+    
+    <div class="row" style="margin-top:30px;padding-left:30px;padding-right:20px;" >
+        <div class="col-sm-12" align="left">
+            <p style="font-weight:bold;font-size:20px;">Questions # {{question.question_dtl.question_num}} : </p>
+            <p style="font-size:18px;">{{question.question_dtl.question}} </p>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:30px;padding-left:30px;padding-right:20px;">
+        <div class="col-sm-12" align="left">
+            <p style="font-weight:bold;font-size:15px;">A : </p>
+            <p style="font-size:18px;">{{question.question_dtl.option_a}} </p>
+            <p style="font-weight:bold;font-size:15px;">B : </p>
+            <p style="font-size:18px;">{{question.question_dtl.option_b}} </p>
+
+            <p style="font-weight:bold;font-size:15px;">C : </p>
+            <p style="font-size:18px;">{{question.question_dtl.option_c}} </p>
+            <p style="font-weight:bold;font-size:15px;">D : </p>
+            <p style="font-size:18px;">{{question.question_dtl.option_d}} </p>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:30px;padding-left:45px;padding-right:30px;" >
+        <div class="row">
+            <div class="col-sm-2" align="left">
+                <p style="font-weight:bold;font-size:18px;">Correct Answer : </p>
+            </div>
+            <div class="col-sm-2" align="left">
+                <p style="font-weight:bold;font-size:18px;" >User Answer : </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2" align="left" style="margin-left:60px;">
+                <p>{{question.question_dtl.answer}} </p>
+            </div>
+            <div class="col-sm-2" align="left" >
+                <p>{{question.user_selection}} </p>
+            </div>
+        </div>
+   
+    </div>
+    
+    {%endfor %}
+
+
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if evaluation_report.question_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ evaluation_report.question_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ evaluation_report.question_obj.number }} of {{ evaluation_report.question_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if evaluation_report.question_obj.has_next %}
+                <a href="?page={{ evaluation_report.question_obj.next_page_number }}">next</a>
+                <a href="?page={{ evaluation_report.question_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+
+ 
+
+</div>
+</section>
+   
+
+    {% endblock content %}
