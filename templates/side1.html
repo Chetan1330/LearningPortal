@@ -1,0 +1,196 @@
+<div class="mdk-drawer js-mdk-drawer"
+                     id="default-drawer">
+                    <div class="mdk-drawer__content ">
+                        <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden"
+                             data-perfect-scrollbar>
+                            <div class="sidebar-p-y">
+                                <div class="sidebar-heading">APPLICATIONS</div>
+                                <ul class="sidebar-menu sm-active-button-bg">
+                                    <li class="sidebar-menu-item {% if 'index' in segment %} active {% endif %}">
+                                        <a class="sidebar-menu-button"
+                                           href="/">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i> Home
+                                        </a>
+                                    </li>
+                                    <!-- <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button"
+                                           href="instructor-dashboard.html">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> Instructor
+                                        </a>
+                                    </li> -->
+                                </ul>
+                                <!-- Account menu -->
+                                <div class="sidebar-heading">Courses</div>
+                                
+                                <ul class="sidebar-menu sm-active-button-bg">
+                                    
+                                    <li class="sidebar-menu-item {% if 'courses.html' in segment %} active {% endif %}">
+                                        <a class="sidebar-menu-button"
+                                           href="/courses">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i>Courses
+                                        </a>
+                                    </li>
+                                   
+                                    <!-- <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button"
+                                           href="instructor-dashboard.html">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> Instructor
+                                        </a>
+                                    </li> -->
+                                </ul>
+                                <!-- <ul class="sidebar-menu">
+                                    
+                                    <li class="sidebar-menu-item">
+
+                                        {% for course in courses %}
+										<div style="width:30%;" class="sub-menu-item">
+                                            <h4 class="test heading">{{course.category_name}}</h4>
+
+                                            <div   class="sample" style="min-height:300px;padding:3px;margin-left:3px;">
+
+                                                {% for exam in course.course_list %}
+                                                    <a href="/exam_preview/{{exam.course_slug}}" style="text-decoration:none;" >{{exam.course_name}}</a>
+                                                {% endfor %}
+                                                                    
+                                            </div>
+										</div>
+										{% endfor %}
+                                        
+                                        {% for course in courses %}
+                                        <a class="sidebar-menu-button sidebar-js-collapse"
+                                           data-toggle="collapse"
+                                           href="#account_menu">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i>{{course.category_name}}
+                                            
+                                            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                                        </a>
+                                        {% endfor %}
+                                        <ul class="sidebar-submenu sm-indent collapse"
+                                            id="account_menu">
+                                            
+                                            <li class="sidebar-menu-item">
+                                                <a class="sidebar-menu-button"
+                                                   href="guest-login.html">
+                                                    <span class="sidebar-menu-text">{{exam.course_name}}</span>
+                                                </a>
+                                            </li>
+                                            
+                                            <li class="sidebar-menu-item">
+                                                <a class="sidebar-menu-button"
+                                                   href="guest-signup.html">
+                                                    <span class="sidebar-menu-text">Sign Up</span>
+                                                </a>
+                                            </li>
+                                            
+                                        </ul>
+                                        
+                                    </li>
+                                    
+                                </ul> -->
+                                
+                                <div class="sidebar-heading">More</div>
+                                <ul class="sidebar-menu sm-active-button-bg">
+                                    <li class="sidebar-menu-item {% if 'Courses.html' in segment %} active {% endif %}">
+                                        <a class="sidebar-menu-button"
+                                           href="/">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i> About Us
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-menu-item {% if 'viewcourse.html' in segment %} active {% endif %}">
+                                        <a class="sidebar-menu-button"
+                                           href="/login/">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> Login
+                                        </a>
+                                    </li>
+                                    <!-- <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button"
+                                           href="student-take-course.html">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">class</i> Take Course
+                                            <span class="sidebar-menu-badge badge badge-primary ml-auto">PRO</span>
+                                        </a>
+                                    </li> -->
+                                    <li class="sidebar-menu-item {% if 'takequiz.html' in segment %} active {% endif %}">
+                                        <a class="sidebar-menu-button"
+                                           href="/">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i> Contact Us
+                                        </a>
+                                    </li>
+                                    <!-- <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button"
+                                           href="student-quiz-results.html">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">poll</i> Quiz Results
+                                        </a>
+                                    </li> -->
+                                    <!-- <li class="sidebar-menu-item {% if 'mycourses.html' in segment %} active {% endif %}">
+                                        <a class="sidebar-menu-button"
+                                           href="mycourses.html">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Courses
+                                        </a>
+                                    </li> -->
+                                    <!-- <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button"
+                                           data-toggle="collapse"
+                                           href="#forum_menu">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">chat_bubble_outline</i>
+                                            Community
+                                            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                                        </a>
+                                        <ul class="sidebar-submenu sm-indent collapse"
+                                            id="forum_menu">
+                                            <li class="sidebar-menu-item">
+                                                <a class="sidebar-menu-button"
+                                                   href="student-forum.html">
+                                                    <span class="sidebar-menu-text">Forum</span>
+                                                </a>
+                                            </li>
+                                            <li class="sidebar-menu-item">
+                                                <a class="sidebar-menu-button"
+                                                   href="student-forum-thread.html">
+                                                    <span class="sidebar-menu-text">Discussion</span>
+                                                </a>
+                                            </li>
+                                            <li class="sidebar-menu-item">
+                                                <a class="sidebar-menu-button"
+                                                   href="student-forum-ask.html">
+                                                    <span class="sidebar-menu-text">Ask Question</span>
+                                                </a>
+                                            </li>
+                                            <li class="sidebar-menu-item">
+                                                <a class="sidebar-menu-button"
+                                                   href="student-profile.html">
+                                                    <span class="sidebar-menu-text">Student Profile - Courses</span>
+                                                </a>
+                                            </li>
+                                            <li class="sidebar-menu-item">
+                                                <a class="sidebar-menu-button"
+                                                   href="student-profile-posts.html">
+                                                    <span class="sidebar-menu-text">Student Profile - Posts</span>
+                                                </a>
+                                            </li>
+                                            <li class="sidebar-menu-item">
+                                                <a class="sidebar-menu-button"
+                                                   href="instructor-profile.html">
+                                                    <span class="sidebar-menu-text">Instructor Profile</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button"
+                                           href="student-help-center.html">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> Get Help
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-menu-item">
+                                        <a class="sidebar-menu-button"
+                                           href="guest-login.html">
+                                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> Logout
+                                        </a>
+                                    </li> -->
+                                </ul>
+                                <!-- Components menu -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>

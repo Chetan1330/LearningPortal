@@ -17,8 +17,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# BASE_URL = 'https://127.0.0.1:80'
-BASE_URL = 'https://cryptoinfo1330.herokuapp.com'
+BASE_URL = 'https://cryptoinfo1330.herokuapp.com/'
 
 DEFAULT_FREE_QUUESTION = 10
 DEFAULT_FREE_QUUESTION_DURATION = 10
@@ -30,7 +29,7 @@ DEFAULT_FREE_QUUESTION_DURATION = 10
 SECRET_KEY = 'django-insecure-nq42zuem74ehydhno0hv$4jm#rj*h7f#jbyk1o0u=miubn^o@e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -55,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -66,10 +66,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'LearningPortal.urls'
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,10 +102,10 @@ WSGI_APPLICATION = 'LearningPortal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME' : 'd1clk7i12laju8',
-        'USER' : 'nacphzotpgghgi',
-        'PASSWORD' : '04ee0f6893cf82732ff2033088d8a8ba209ecf2fcf344cbdf6eb56f15dc39568',
-        'HOST' : 'ec2-54-85-56-210.compute-1.amazonaws.com',
+        'NAME' : 'learning',
+        'USER' : 'postgres',
+        'PASSWORD' : 'admin',
+        'HOST' : 'localhost',
         'PORT' : '5432'
     }
 }
@@ -145,20 +147,12 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'/')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATIC_URL = '/static/'
-
-# # Extra places for collectstatic to find static files.
+# STATIC_ROOT = os.path.join(BASE_DIR,'/')
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
-# ) 
-
+# )
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')

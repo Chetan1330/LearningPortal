@@ -1,0 +1,466 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Profile{% endblock title %}
+
+{% block content %}
+<style>
+ .card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+
+</style>
+
+<section class="section  pclear secPadding" style="background-color:#ebebf9;margin-top:20px;min-height:1050px;">
+  <form role="form" action="" method="post">
+<div class="container" style="margin-top:20px;overflow-x: hidden;">
+<div class="card" style="width:100%;min-height:900px;margin-bottom:20px;">
+<!-- <div class="row">
+  <div class="col-sm-12" style="margin-top:10px;font-Weight:BOLD;margin-left:935px;" align="left">
+    <input type="submit"  style="width:130px;height:30px;padding:5px;font-weight:bold;font-size:18px;" class="btn btn-primary" value="SAVE"/>
+  </div>
+</div> -->
+
+
+{% csrf_token %}
+<input type="hidden" name="auth_user_id" value="{{user.id}}"/>
+      <div class="row" >
+        <div class="col-md-12">
+
+
+        <div class="row" style="width:99%;height:36px;border-radius:5px;padding:3px;margin:10px;color:black;background-color:#ebebf9;font-size:20px;">
+          <div class="col col-md-3" align="left">
+            <div class="row">
+              
+             <div class="col col-md-12" style="color:red;font-size:18px;">
+                {{message}}
+              </div>
+            </div> 
+          </div>
+          
+          <div class="col col-md-4" align="right">
+          <div >
+            <strong>User Details</strong>
+          </div>
+        </div>
+        <div class="col col-md-5" align="right" >
+          
+            <input type="submit"  style="width:90px;height:33px;font-weight:bold;font-size:14px;" class="btn btn-primary" value="Save"/>
+          
+        </div>
+
+        </div>
+
+
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:10px;">
+              <label >First Name :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;">
+              <input style="width:80%;" name="first_name" class="form-control" value="{{form.first_name.value|default_if_none:""}}">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:10px;">
+              <label >Last Name :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;">
+              <input style="width:80%;" name="last_name" class="form-control" value="{{form.last_name.value|default_if_none:""}}">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:20px;">
+              <label >User Name :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;margin-top:10px;">
+              <input style="width:80%;" class="form-control" value="{{user.username}}" readonly="true">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:20px;">
+              <label >Email :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;margin-top:10px;">
+              <input style="width:285px;margin-left:2px;"  type="text" value="{{form.email.value|default_if_none:""}}" class="form-control" id="email" name="email" placeholder="Enter email address"  autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:20px;">
+              <label >Phone Number:</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;margin-top:10px;">
+              <input style="width:80%;" class="form-control" name="phone" value="{{form.phone.value|default_if_none:""}}">
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    
+  
+      <div class="row">
+        <div class="col-md-12">
+          <div style="width:99%;height:33px;border-radius:5px;padding:3px;margin:10px;color:black;background-color:#ebebf9;font-size:20px;">
+            <strong>Education Details</strong>
+          </div>
+        </div>
+      </div>
+          
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;">
+              <label >Bachelor Degree:</label>
+            </div>
+            <div class="col-md-8"  style="margin-left:2px;">
+              <select class="form-control" align="left" name="bachelor_degree" id="id_bachelor_degree" style="width:280px;margin-left:2px;">
+                
+            <option >Select</option>
+            <option>BE</option>
+            <option>BSc.</option>
+            <option>BTech</option>
+            <option>BA</option>
+            <option>BCom</option>
+          </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" style="margin-left:40px;margin-top:10px;">
+              <label >Year of Pass :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;">
+              <select class="form-control" id="id_bachelor_yop" style="width:280px;" name="bachelor_yop">
+                <option>Select</option>
+                <option>2022</option>
+                <option>2021</option>
+                <option>2020</option>
+                <option>2019</option>
+                <option>2018</option>
+                <option>2017</option>
+                <option>2016</option>
+                <option>2015</option>
+                <option>2014</option>
+                <option>2013</option>
+                <option>2012</option>
+                <option>2011</option>
+                <option>2010</option>
+                <option>2009</option>
+                <option>2008</option>
+                <option>2007</option>
+                <option>2006</option>
+                <option>2005</option>
+                <option>2004</option>
+                <option>2003</option>
+                <option>2002</option>
+                <option>2001</option>
+                <option>2000</option>
+                <option>1999</option>
+                <option>1998</option>
+                <option>1997</option>
+                <option>1996</option>
+                <option>1995</option>
+                <option>1994</option>
+                <option>1993</option>
+                <option>1992</option>
+                <option>1991</option>
+                <option>1990</option>
+                <option>1989</option>
+                <option>1988</option>
+                <option>1987</option>
+                <option>1986</option>
+                <option>1985</option>
+                <option>1984</option>
+                <option>1983</option>
+                <option>1982</option>
+                <option>1981</option>
+                <option>1980</option>
+            </select>
+            </div>
+          </div>
+        </div>
+      </div>
+          
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:20px;">
+              <label >Master Degree :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;margin-top:10px;">
+              <select class="form-control" id="id_master_degree" style="width:280px;" name="master_degree">
+            <option>Select</option>
+            <option>ME</option>
+            <option>MSc.</option>
+            <option>MTech</option>
+            <option>MA</option>
+            <option>MCom</option>
+          </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" style="margin-left:40px;margin-top:20px;">
+              <label >Year of Pass :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;margin-top:10px;">
+              <select class="form-control" id="id_master_yop" style="width:280px;" name="master_yop">
+                <option>Select</option>
+                <option>2022</option>
+                <option>2021</option>
+                <option>2020</option>
+                <option>2019</option>
+                <option>2018</option>
+                <option>2017</option>
+                <option>2016</option>
+                <option>2015</option>
+                <option>2014</option>
+                <option>2013</option>
+                <option>2012</option>
+                <option>2011</option>
+                <option>2010</option>
+                <option>2009</option>
+                <option>2008</option>
+                <option>2007</option>
+                <option>2006</option>
+                <option>2005</option>
+                <option>2004</option>
+                <option>2003</option>
+                <option>2002</option>
+                <option>2001</option>
+                <option>2000</option>
+                <option>1999</option>
+                <option>1998</option>
+                <option>1997</option>
+                <option>1996</option>
+                <option>1995</option>
+                <option>1994</option>
+                <option>1993</option>
+                <option>1992</option>
+                <option>1991</option>
+                <option>1990</option>
+                <option>1989</option>
+                <option>1988</option>
+                <option>1987</option>
+                <option>1986</option>
+                <option>1985</option>
+                <option>1984</option>
+                <option>1983</option>
+                <option>1982</option>
+                <option>1981</option>
+                <option>1980</option>
+            </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  
+  
+        <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:20px;">
+              <label >Specalization :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;margin-top:10px;">
+              <input style="width:280px;" value="{{form.specialization.value|default_if_none:""}}" class="form-control" name="specialization">
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    
+      {% csrf_token %}
+      
+        <div class="row">
+        <div class="col-md-12">
+          <div style="width:99%;height:33px;border-radius:5px;padding:3px;margin:10px;color:black;background-color:#ebebf9;font-size:20px;">
+            <strong>Work Details</strong>
+          </div>
+        </div>
+        </div>	
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:20px;">
+              <label >Project Title :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;margin-top:10px;">
+              <input style="width:80%;" class="form-control"  name="project_title">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:20px;">
+              <label >Duration :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;margin-top:10px;">
+              <input style="width:80%;" class="form-control" value="" name="duration">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:20px;">
+              <label >Tech Stack :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;margin-top:10px;">
+              <input style="width:80%;" class="form-control" value="" name="tech_stack">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3" align="left" style="margin-left:40px;margin-top:20px;">
+              <label >Project Description :</label>
+            </div>
+            <div class="col-md-8" style="margin-left:5px;margin-top:10px;">
+              <textarea class="form-control" name="project_description" value="" style="width:290px;" rows="3">
+                
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col col-md-12"  style="margin-left:350px;margin-top:20px;" >
+          <input type="submit"  style="width:50px;height:33px;font-weight:bold;" class="btn-primary" value="ADD"/>
+        </div>
+    </div> -->
+      </form>
+
+      {% for project in projects %}
+      <div class="row" style="margin-top:30px;">
+        <div class="col col-md-6">
+          <div class="row">
+            <div class="col col-md-3" style="font-weight:bold;padding:5px;margin-left:30px;">
+              <p>Project Title :</p>
+            </div>
+            <div class="col col-md-8" align="left" style="padding:5px;">
+              <p>{{project.project_title}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-3" style="font-weight:bold;margin-left:42px;padding:5px;">
+              <p>Duration :</p>
+            </div>
+            <div class="col col-md-8" align="left" style="padding:5px;">
+              <p>{{project.duration}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-md-3" style="font-weight:bold;margin-left:32px;padding:5px;">
+              <p>Tech Stack :</p>
+            </div>
+            <div class="col col-md-8" align="left" style="padding:5px;">
+              <p>{{project.tech_stack}}</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col col-md-6">
+          <div class="row" align="left" style="font-weight:bold;margin-left:35px;padding:5px;">
+            <p>Project Description :</p>
+          </div>
+  
+          <div class="row" align="left" style="margin-left:40px;margin-right:20px;">
+            <p>{{project.project_description}}
+          </p>
+        
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      
+      
+      
+      
+      
+      
+          
+</div>
+</div>
+
+<script>
+  $(document).ready(function() {  
+      
+
+    $("#id_bachelor_degree").val("{{form.bachelor_degree.value}}");
+    $("#id_master_degree").val("{{form.master_degree.value}}");
+    $("#id_bachelor_yop").val("{{form.bachelor_yop.value}}");
+    $("#id_master_yop").val("{{form.master_yop.value}}");
+
+    });
+</script>
+</section>
+
+
+
+
+{% endblock content %}
