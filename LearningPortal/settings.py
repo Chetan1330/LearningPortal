@@ -17,7 +17,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-BASE_URL = 'https://127.0.0.1:80'
+# BASE_URL = 'https://127.0.0.1:80'
+BASE_URL = 'https://cryptoinfo1330.herokuapp.com'
 
 DEFAULT_FREE_QUUESTION = 10
 DEFAULT_FREE_QUUESTION_DURATION = 10
@@ -29,7 +30,7 @@ DEFAULT_FREE_QUUESTION_DURATION = 10
 SECRET_KEY = 'django-insecure-nq42zuem74ehydhno0hv$4jm#rj*h7f#jbyk1o0u=miubn^o@e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -143,20 +144,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'/')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR,'/')
+
+# # Extra places for collectstatic to find static files.
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
-# )
-
-
-STATIC_ROOT = os.path.join(CORE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(CORE_DIR, 'static'),
-) 
+# ) 
 
 
 MEDIA_URL ='/media/'
