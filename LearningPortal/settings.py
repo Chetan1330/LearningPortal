@@ -28,7 +28,7 @@ DEFAULT_FREE_QUUESTION_DURATION = 10
 SECRET_KEY = 'django-insecure-nq42zuem74ehydhno0hv$4jm#rj*h7f#jbyk1o0u=miubn^o@e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
