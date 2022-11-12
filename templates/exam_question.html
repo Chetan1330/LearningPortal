@@ -1,8 +1,8 @@
+{% load static %}
+    <div class="row" style="padding-top: 5px;">
+        <div class="col-sm-12">
 
-    <div class="row">
-        <div class="col-sm-12" align="left">
-
-            <div class="row"  style="background-color:#ffffff;height:40px;margin-left:2px;">
+            <div class="row col-sm-12"  style="background-color:#ffffff;margin-left:2px;">
                 <!-- <div class="col col-sm-1" style="margin-top:8px;" align="left">
                     <button style="width:80px;" class="btn-primary">MARK</button>
                 </div>
@@ -21,38 +21,38 @@
 
 
                 
-                <div class="col-sm-4" align="left">
+                <!-- <div class="col-sm-4" align="left">
                     
-                </div>
-                <div class="col-sm-1" style="margin-top:3px;" align="left">
+                </div> -->
+                <div class="col-sm-1" style="margin-top:3px;">
                     {% if question_dtls.question_num > 1  %}
-                   <a href = "javascript:LoadQuestion ({{question_dtls.question_num|add:'-1'}}, 'false')"><img id="logo"  src="{{ base_url }}/media/images/core/left.png"  alt="Worthy"></a>
+                   <a href = "javascript:LoadQuestion ({{question_dtls.question_num|add:'-1'}}, 'false')"><img id="logo"  src="{% static 'assets/media/images/core/left.png' %}"  alt="Worthy"></a>
                    {% endif %}
                 </div>
-                <div class="col-sm-1" style="margin-top:3px;">
+                <div class="col-sm-1" >
 
 
                     {% if question_dtls.question_num < max_question  %}
-                    <a  href = "javascript:LoadQuestion ({{question_dtls.question_num|add:'+1'}}, 'true')"><img id="logo"  src="{{ base_url }}/media/images/core/right.png" alt="Worthy"> </a>
+                    <a  href = "javascript:LoadQuestion ({{question_dtls.question_num|add:'+1'}}, 'true')"><img id="logo"  src="{% static 'assets/media/images/core/right.png' %}" alt="Worthy"> </a>
                     {% endif %}
                    <!-- <a  href = "/exam/{{course_slug}}/{{next_question}}"><img id="logo"  src="{{ base_url }}/media/images/core/right.png" alt="Worthy"> </a> -->
                 </div>
                 
-                <div class="col-sm-1" style="margin-top:8px;font-Weight:BOLD;" align="left">
+                <div class="col-sm-3" style="margin-top: 5px;font-Weight:BOLD;">
                     <button  style="width:160px;" class="btn-primary" onClick = "EvaluateExam('{{question_dtls.question_num}}')">Evaluate</button>
                 </div>
-                <div class="col-sm-1" align="left">
+                <!-- <div class="col-sm-1" align="left">
                     
                 </div>
                 <div class="col-sm-1" align="left">
                     
                 </div>
-                
-                <div class="col-sm-1" style="margin-top:8px;font-Weight:BOLD;" align="left">
+                 -->
+                <div class="col-sm-3" style="margin-top: 5px; font-Weight:BOLD;" >
                     <!-- <button  style="width:160px;margin-left:100px;" class="btn-primary" >MORE QUESTIONS</button> -->
                     <!-- <a href="/login/"  style="width:140px;height:25px;margin-left:50px;padding:1px;" align="center" class="btn btn-primary" ><b >MORE QUESTIONS</b></a>									 -->
                     {% if not user.is_authenticated %} 
-                    <a href="/login/"  style="width:140px;height:25px;margin-left:50px;padding:1px;" align="center" class="btn btn-primary" ><b >MORE QUESTIONS</b></a>
+                    <a href="/login/"  style="width:140px;height:25px;padding:1px;" class="btn btn-primary" ><b >MORE QUESTIONS</b></a>
                      {% endif %}
                     
                 </div>
@@ -64,16 +64,16 @@
             
             
             <div class="row"style="margin-top: 15px;" >
-                <div class="col-sm-6" align="left">
+                <div class="col-sm-6" >
                 <div class="row" style="background-color:#ffffff;height:30px;margin-left:2px;">
-                    <div class="col-sm-6" style="margin-top:5px;" align="left">
+                    <div class="col-sm-6" style="margin-top:5px;" >
                         {% if not user.is_authenticated %} 
                         FREETEST 
                         {% else %}
                         PRACTICE EXAM
                         {% endif %}- QUESTION 
                     </div>
-                    <div style="margin-top:5px;"  class="col-sm-6" align="right">
+                    <div style="margin-top:5px;"  class="col-sm-6" >
                         <!-- CORRECT ANSWER: A -->
                         QUESTION : {{question_dtls.question_num}}/{{max_question}}
                     </div>
@@ -83,8 +83,8 @@
                 </div>
                 
                 
-                <div class="row" style="margin-top: 15px;margin-left:2px;">
-                    <div class="col-sm-12" style="background-color:#ffffff;padding-top: 5px;" align="left">
+                <div class="row" style="margin-top: 30px;margin-left:2px;">
+                    <div class="col-sm-12" style="background-color:#ffffff;padding-top: 5px;">
 
                         {{question_dtls.question}}
 
@@ -102,9 +102,9 @@
                 
                 
                 
-                <div class="col-sm-6" align="center">
+                <div class="col-sm-6" style="margin-top: 5px;">
                     <div style="background-color:#ebebf9;margin-left:2px;" class="row">
-                    <div  class="col-sm-1" align="left" style="font-weight: bold;">
+                    <div  class="col-sm-1" style="font-weight: bold;">
                        A
                     </div>
                     <div class="col-sm-1"  style="padding-bottom: 4px;">
@@ -126,7 +126,7 @@
                     </div>
                     
                     <div style="background-color:#ebebf9;margin-left:2px;" class="row">
-                    <div  class="col-sm-1" align="left" style="font-weight: bold;">
+                    <div  class="col-sm-1" style="font-weight: bold;">
                        B
                     </div>
                     <div class="col-sm-1"  style="padding-bottom: 4px;">
@@ -148,7 +148,7 @@
                     </div>
                     
                     <div style="background-color:#ebebf9;margin-left:2px;"class="row">
-                    <div  class="col-sm-1" align="left" style="font-weight: bold;">
+                    <div  class="col-sm-1" style="font-weight: bold;">
                        C
                     </div>
                     <div class="col-sm-1"  style="padding-bottom: 4px;">
@@ -170,7 +170,7 @@
                     </div>
                     
                     <div style="background-color:#ebebf9;margin-left:2px;" class="row">
-                    <div  class="col-sm-1" align="left" style="font-weight: bold;">
+                    <div  class="col-sm-1" style="font-weight: bold;">
                        D
                     </div>
                     <div class="col-sm-1"  style="padding-bottom: 4px;">
