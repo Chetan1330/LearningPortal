@@ -17,7 +17,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 CORE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-BASE_URL = 'https://cryptoinfo1330.herokuapp.com'
+BASE_URL = 'https://getskill.herokuapp.com'
 
 DEFAULT_FREE_QUUESTION = 10
 DEFAULT_FREE_QUUESTION_DURATION = 10
