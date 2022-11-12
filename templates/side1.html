@@ -1,3 +1,4 @@
+{% if request.user.is_authenticated %}
 <div class="mdk-drawer js-mdk-drawer"
                      id="default-drawer">
                     <div class="mdk-drawer__content ">
@@ -96,7 +97,7 @@
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i> About Us
                                         </a>
                                     </li>
-                                    <li class="sidebar-menu-item {% if 'viewcourse.html' in segment %} active {% endif %}">
+                                    <li class="sidebar-menu-item {% if 'login' in segment %} active {% endif %}">
                                         <a class="sidebar-menu-button"
                                            href="/login/">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> Login
@@ -194,3 +195,4 @@
                         </div>
                     </div>
                 </div>
+{% endif %}
