@@ -7,10 +7,11 @@
         <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0">
             <div class="container-fluid">
                 <!-- Toggle sidebar -->
+                {% if request.user.is_authenticated %}
                 <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">
                     <span class="material-icons">menu</span>
                 </button>
-
+                {% endif %}
                 <!-- Brand -->
                 <a href="student-dashboard.html" class="navbar-brand">
                     <svg style="margin-right: 8px;" xmlns="http://www.w3.org/2000/svg"
@@ -36,25 +37,35 @@
 
                 <!-- Menu -->
                 <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
-                    <li class="nav-item">
-                        <a class="nav-link" href="student-forum.html">Forum</a>
+                    <li class="nav-item {% if 'index' in segment %} active {% endif %}">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item {% if 'courses.html' in segment %} active {% endif %}">
+                        <a class="nav-link" href="/courses">Courses</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="student-help-center.html">Get Help</a>
+                        <a class="nav-link" href="/">About Us</a>
+                    </li>
+                    <li class="nav-item {% if 'login' in segment %} active {% endif %}">
+                        <a class="nav-link" href="/login/">Login</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/">Contact Us</a>
                     </li>
                 </ul>
 
+                {% if request.user.is_authenticated %}
                 <!-- Menu -->
                 <ul class="nav navbar-nav flex-nowrap">
 
-                    <li class="nav-item d-none d-md-flex">
+                    <!-- <li class="nav-item d-none d-md-flex">
                         <a href="student-cart.html" class="nav-link">
                             <i class="material-icons">shopping_cart</i>
                         </a>
-                    </li>
-
+                    </li> -->
+                    
                     <!-- Notifications dropdown -->
-                    <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
+                    <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full ">
                         <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown"
                             data-dropdown-disable-document-scroll data-caret="false">
                             <i class="material-icons">notifications</i>
@@ -108,7 +119,7 @@
                                                 </a>
 
                                             </div> -->
-
+                                
                                 <div class="dropdown-header"><strong>System notifications</strong></div>
                                 <div class="list-group list-group-flush mb-0">
 
@@ -186,15 +197,15 @@
                             <a class="dropdown-item" href="student-profile.html">
                                 <i class="material-icons">person</i> Public Profile
                             </a>
-                            <a class="dropdown-item" href="guest-login.html">
+                            <a class="dropdown-item" href="/logout">
                                 <i class="material-icons">lock</i> Logout
                             </a>
                         </div>
                     </li>
                     <!-- // END User dropdown -->
-
                 </ul>
                 <!-- // END Menu -->
+                {% endif %}
             </div>
         </nav>
         <!-- // END Navbar -->

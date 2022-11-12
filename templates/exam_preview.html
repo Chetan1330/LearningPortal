@@ -4,8 +4,6 @@
 {% block title %}Edit Profile{% endblock title %}
 
 
-
-
 {% block content %}
 
 {% block stylesheets %}
@@ -418,7 +416,7 @@
 <section class="section  pclear secPadding" style="background-color:#ebebf9;"></section>
 <div class="container" style="margin-top:15px;width:98%" align="center">
 
-    <div class="row " style="margin-top: 10px;">
+    <!-- <div class="row " style="margin-top: 10px;">
         <div class="col-sm-12" align="center" style="background-color:#ffffff">
             <h2 style="font-weight:bold;">{{course_title}}</h2>
         </div>
@@ -446,7 +444,7 @@
             </div>
         </div>
 
-    </div>
+    </div> -->
 
     <div class="row">
         <div class="col col-md-12">
@@ -471,7 +469,7 @@
         </div>
     </div>
 
-    <div class="row " style="margin-top: 20px;">
+    <!-- <div class="row " style="margin-top: 20px;">
         <div class="col-sm-2" align="left">
         </div>
         <div class="col-sm-8" align="left">
@@ -485,7 +483,7 @@
         <div class="col-sm-12" align="center">
             <a href="javascript:StartExam()" class="btn btn-primary" style="font-size:20px;"><b>Start</b></a>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -526,11 +524,7 @@
     <section class="section-1 section-facts flex">
         <div class="left aligner">
             <div class=alignee>
-                <h2 class="heading blue product-code">AWS-Certified-Solutions-Architect-Associate Practice Test <span
-                        class=category-page-link><a
-                            title="Latest Amazon-AWS-Certified-Solutions-Architect-Associate Practice Test Simulator"
-                            href=/practice-exam/amazon/aws-certified-solutions-architect-associate
-                            class=product-category>Buy Now ></a></span></h2>
+                <h2 class="heading blue product-code">AWS-Certified-Solutions-Architect-Associate Practice Test</h2>
                 <h1 class="heading vendor-title">{{course_title}}</h1>
                 <h2 class="heading product-title">{{course_desc|safe}}</h2>
                 <h2 class=exam-fact>- Get instant access to AWS-Certified-Solutions-Architect-Associate practice exam
@@ -546,7 +540,7 @@
                     here.</h2>
                 <div class=content><a
                         title="Latest Free Trial Amazon-AWS-Certified-Solutions-Architect-Associate Practice Test Simulator"
-                        href=/amazon-dumps/aws-certified-solutions-architect-associate.html id=start-test
+                        href="javascript:StartExam()" id=start-test
                         class="button button-filled">START FREE<svg class="right-angle" width="9" viewBox="0 -2 8 21">
                             <use transform="scale(0.4)" xlink:href="#angle-right" />
                         </svg></a>
@@ -614,10 +608,10 @@
                 <div id=fact-trust class="exam-fact trust"><span><b>Trusted By 19,000+</b> Developers and Software
                         Engineers...</span></div>
                 <div id=fact-social class="exam-fact social-icons"></div>
-                <div id=fact-users class="exam-fact active-users"><i>- 35 Active Users Using
+                <!-- <div id=fact-users class="exam-fact active-users"><i>- 35 Active Users Using
                         AWS-Certified-Solutions-Architect-Associate Practice Exam</i></div>
                 <div id=fact-subscribers class="exam-fact active-users"><i>- 1958 Subscribed Users In
-                        The Last 7 Days</i></div>
+                        The Last 7 Days</i></div> -->
             </div>
         </div>
         <div class="right mobile-hide">
@@ -694,7 +688,7 @@
             </aside>
         </div>
     </section>
-    <section style="margin-left: 30px;" class="section-2 section-promotion flex">
+    <!-- <section style="margin-left: 30px;" class="section-2 section-promotion flex">
         <div class="left"><img alt="certification questions practice tests" title="certification questions practice tests"
                 src="{% static 'assets/media/images/portfolio-11.jpg' %}">
         </div>
@@ -782,7 +776,7 @@
                         </svg></a></div>
             </div>
         </div>
-    </section>
+    </section> -->
     <section class="section-3 section-service">
         <div class=service-content>
             <article>
@@ -922,10 +916,10 @@
                 <h4 id=what-is-the-duration-language-and-format-of-aws-solutions-architect-associate-exam>What is the
                     duration, language, and format of AWS Solutions Architect-Associate Exam</h4>
                 <ul>
-                    <li>Duration of Exam: 130 minutes</li>
+                    <li>Duration of Exam: {{course_duration}} minutes</li>
                     <li>Number of Questions: 65</li>
                     <li>No negative marking for wrong answers</li>
-                    <li>Passing score: 72%</li>
+                    <li>Passing score: {{course_pass_score}}</li>
                     <li>Type of Questions: Multiple choice (MCQs), multiple answers</li>
                     <li>Language of Exam: English, Japanese, Korean</li>
                 </ul>
@@ -989,11 +983,11 @@
             <aside id=index>
                 <div class=index-wrapper>
                     <div class=index-header><strong>Table Of Content:</strong>
-                        <a title="Latest Free Trial Amazon-AWS-Certified-Solutions-Architect-Associate Practice Test Simulator"
+                        <!-- <a title="Latest Free Trial Amazon-AWS-Certified-Solutions-Architect-Associate Practice Test Simulator"
                             href=/amazon-dumps/aws-certified-solutions-architect-associate.html
                             class="button button-filled">START<svg class="right-angle" width="9" viewBox="0 -2 8 21">
                                 <use transform="scale(0.4)" xlink:href="#angle-right" />
-                            </svg></a>
+                            </svg></a> -->
                     </div>
                     <nav id=TableOfContents>
                         <ul>
