@@ -35,7 +35,11 @@
 
                 <div class="flex"></div>
 
+                
+
+                {% if request.user.is_authenticated %}
                 <!-- Menu -->
+
                 <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                     <li class="nav-item {% if 'index' in segment %} active {% endif %}">
                         <a class="nav-link" href="/">Home</a>
@@ -46,16 +50,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">About Us</a>
                     </li>
-                    <li class="nav-item {% if 'login' in segment %} active {% endif %}">
-                        <a class="nav-link" href="/login/">Login</a>
-                    </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="/">Contact Us</a>
                     </li>
                 </ul>
 
-                {% if request.user.is_authenticated %}
-                <!-- Menu -->
                 <ul class="nav navbar-nav flex-nowrap">
 
                     <!-- <li class="nav-item d-none d-md-flex">
@@ -191,11 +190,11 @@
                                 src="{% static 'assets/media/images/core/image.jpg' %}" alt="Avatar" class="rounded-circle"
                                 width="40"></a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="student-account-edit.html">
+                            <!-- <a class="dropdown-item" href="student-account-edit.html">
                                 <i class="material-icons">edit</i> Edit Account
-                            </a>
-                            <a class="dropdown-item" href="student-profile.html">
-                                <i class="material-icons">person</i> Public Profile
+                            </a> -->
+                            <a class="dropdown-item" href="/profile/">
+                                <i class="material-icons">person</i> Profile
                             </a>
                             <a class="dropdown-item" href="/logout">
                                 <i class="material-icons">lock</i> Logout
@@ -205,6 +204,25 @@
                     <!-- // END User dropdown -->
                 </ul>
                 <!-- // END Menu -->
+                {% else %}
+                    <!-- Menu -->
+                    <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
+                        <li class="nav-item {% if 'index' in segment %} active {% endif %}">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item {% if 'courses.html' in segment %} active {% endif %}">
+                            <a class="nav-link" href="/courses">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">About Us</a>
+                        </li>
+                        <li class="nav-item {% if 'login' in segment %} active {% endif %}">
+                            <a class="nav-link" href="/login/">Login</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/">Contact Us</a>
+                        </li>
+                    </ul>
                 {% endif %}
             </div>
         </nav>
